@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        label {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="operandOne">Enter your name:</label>
+        <input name="operandOne" id="operandOne" value="" />
+        
+        <label for="total">Result:</label>
+        <div id="total"></div>
+        
+        <button type="button" id="greet-btn">Greet Me</button>
+    </form>
+
+    <py-script>
+        from pyscript import Element
+
+        def greet_user(event):
+            input_box = Element("operandOne")
+            name = input_box.value
+            result = Element("total")
+            if name:
+                result.write(f"Hello! The input says: {name}")
+            else:
+                result.write("Please enter your name.")
+
+        # Attach event listener to button
+        Element("greet-btn").element.onclick = greet_user
+    </py-script>
+</body>
+</html>
+
